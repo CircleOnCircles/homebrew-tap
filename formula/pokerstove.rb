@@ -16,6 +16,8 @@ class Pokerstove < Formula
         system "cmake", "-DCMAKE_BUILD_TYPE=Release", ".."
         system "make"
         bin.install "bin/ps-eval"
+        bin.install_symlink "pokerstove-eval" => "ps-eval"
+        bin.install_symlink "pokerstove" => "ps-eval"
         bin.install "bin/ps-colex"
         bin.install "bin/peval_tests"
       end
@@ -23,9 +25,9 @@ class Pokerstove < Formula
   
     def caveats; <<~EOS
       To run:
-            ps-eval acas
-            ps-eval AcAs Kh4d --board 5c8s9h
-            ps-eval --game l 7c5c4c3c2c
+            pokerstove-eval acas
+            pokerstove-eval AcAs Kh4d --board 5c8s9h
+            pokerstove-eval --game l 7c5c4c3c2c
         for more info, visit https://github.com/andrewprock/pokerstove
     EOS
     end
